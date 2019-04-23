@@ -40,14 +40,14 @@ class Experiment extends React.Component {
       this.delayedInitialization();
     }
 
-    window.gtag && window.gtag("event", "optimize.callback", {
+    window !== undefined && window.gtag && window.gtag("event", "optimize.callback", {
       name: this.props.id,
       callback: this.updateVariant
     });
   }
 
   componentWillUnmount() {
-    window.gtag && window.gtag("event", "optimize.callback", {
+    window !== undefined && window.gtag && window.gtag("event", "optimize.callback", {
       name: this.props.id,
       callback: this.updateVariant,
       remove: true
